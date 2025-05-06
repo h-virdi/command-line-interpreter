@@ -15,30 +15,42 @@ Clone the repository and run this:
 git clone https://github.com/h-virdi/command-line-interpreter.git
 cd command-line-interpreter
 python3 command.py
+```
 
 ## Example Usage
+
+```bash
 (mycommand) > ls
 command.py
 empty
 empty.py
 README.md
 .git
+
 (mycommand) > mv empty.py empty
 Moved from 'empty.py' to 'empty'
+
 (mycommand) > cd empty
 Changed directory to /Users/harnoor/command-line-interpreter/empty
+
 (mycommand) > pwd
 /Users/harnoor/command-line-interpreter/empty
+
 (mycommand) > ls
 empty.py
+
 (mycommand) > rm empty.py
 Removed file: empty.py
+
 (mycommand) > ls
+
 (mycommand) > cd ..
 Changed directory to /Users/harnoor/command-line-interpreter
+
 (mycommand) > ls
 command.py
 empty
 README.md
 .git
+
 (mycommand) > quit
