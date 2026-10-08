@@ -5,9 +5,10 @@ import cmd
 import platform
 
 class MyCommand(cmd.Cmd):
+
 	prompt = "(mycommand) > "
 
-	def do_quit(self, arg):
+	def do_quit(self):
 		"""This quits or exits the program."""
 		return True
 	
@@ -24,7 +25,7 @@ class MyCommand(cmd.Cmd):
 		except Exception as e:
 			print(f"Error: {e}")
 
-	def do_ls(self, arg):
+	def do_ls(self):
 		"""This lists the files and directories in the current working directory."""
 		try:
 			for entry in os.listdir():
@@ -32,11 +33,11 @@ class MyCommand(cmd.Cmd):
 		except Exception as e:
 			print(f"Error: {e}")
 
-	def do_pwd(self, arg):
+	def do_pwd(self):
 		"""This prints the current working directory."""
 		print(os.getcwd())
 
-	def do_clear(self, arg):
+	def do_clear(self):
 		"""This clears the screen."""
 		os.system("cls" if platform.system() == "Windows" else "clear")
 
@@ -93,4 +94,5 @@ class MyCommand(cmd.Cmd):
 	do_exit = do_quit
 	do_dir = do_ls
 
-MyCommand().cmdloop()
+if __name__ == "__main__":
+		MyCommand().cmdloop()
