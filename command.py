@@ -8,7 +8,7 @@ class MyCommand(cmd.Cmd):
 
 	prompt = "(mycommand) > "
 
-	def do_quit(self):
+	def do_quit(self, arg):
 		"""This quits or exits the program."""
 		return True
 	
@@ -25,7 +25,7 @@ class MyCommand(cmd.Cmd):
 		except Exception as e:
 			print(f"Error: {e}")
 
-	def do_ls(self):
+	def do_ls(self, arg):
 		"""This lists the files and directories in the current working directory."""
 		try:
 			for entry in os.listdir():
@@ -33,7 +33,7 @@ class MyCommand(cmd.Cmd):
 		except Exception as e:
 			print(f"Error: {e}")
 
-	def do_pwd(self):
+	def do_pwd(self, arg):
 		"""This prints the current working directory."""
 		print(os.getcwd())
 
