@@ -45,4 +45,17 @@ class CliTests(unittest.TestCase):
         os.mkdir("target_dir")
         self.run_cmd("mv file1.text target_dir")
         self.assertTrue(os.path.exists("target_dir/file1.text"))
-        
+
+    def test_mv_missing_args(self):
+        output = self.run_cmd("mv")
+        self.assertIn("Error", output)
+
+    def test_mv_invalid_src(self):
+        os.mkdir("target_dir")
+        output = self.run_cmd("mv non_existent_file.txt target_dir")
+        self.assertFalse(os.path.exists("target_dir/non_existent_file.txt"))
+
+    def test_mv_invalid_dest(self):
+        open("file1.txt", "w").close()
+        output = self.run_cmd("mv file1.txt non_existent_dir")
+        self.assertFalse(os.path.exists("non_existent_dir/file1.txt"))  # File should not be moved
