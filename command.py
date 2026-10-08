@@ -14,8 +14,8 @@ class MyCommand(cmd.Cmd):
 	def do_cd(self, path):
 		"""This changes the current working directory."""
 		if not path:
-            		print("Usage: cd <path>")
-            		return
+			print("Usage: cd <path>")
+			return
 		try:
 			os.chdir(path)
 			print(f"Changed directory to {os.getcwd()}")
