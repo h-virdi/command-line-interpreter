@@ -5,6 +5,7 @@ import cmd
 import platform
 
 class MyCommand(cmd.Cmd):
+
 	prompt = "(mycommand) > "
 
 	def do_quit(self, arg):
@@ -14,8 +15,8 @@ class MyCommand(cmd.Cmd):
 	def do_cd(self, path):
 		"""This changes the current working directory."""
 		if not path:
-            		print("Usage: cd <path>")
-            		return
+			print("Usage: cd <path>")
+			return
 		try:
 			os.chdir(path)
 			print(f"Changed directory to {os.getcwd()}")
@@ -36,7 +37,7 @@ class MyCommand(cmd.Cmd):
 		"""This prints the current working directory."""
 		print(os.getcwd())
 
-	def do_clear(self, arg):
+	def do_clear(self):
 		"""This clears the screen."""
 		os.system("cls" if platform.system() == "Windows" else "clear")
 
@@ -50,6 +51,8 @@ class MyCommand(cmd.Cmd):
 				print(f"Removed file: {file}")
 			else:
 				print(f"No such file found: {file}")
+		except ValueError:
+			print("Error: Invalid number of arguments.")
 		except Exception as e:
 			print(f"Error removing file: {e}")
 
@@ -93,4 +96,5 @@ class MyCommand(cmd.Cmd):
 	do_exit = do_quit
 	do_dir = do_ls
 
-MyCommand().cmdloop()
+if __name__ == "__main__":
+		MyCommand().cmdloop()
