@@ -52,10 +52,18 @@ class CliTests(unittest.TestCase):
 
     def test_mv_invalid_src(self):
         os.mkdir("target_dir")
-        output = self.run_cmd("mv non_existent_file.txt target_dir")
+        self.run_cmd("mv non_existent_file.txt target_dir")
         self.assertFalse(os.path.exists("target_dir/non_existent_file.txt"))
 
     def test_mv_invalid_dest(self):
         open("file1.txt", "w").close()
-        output = self.run_cmd("mv file1.txt non_existent_dir")
+        self.run_cmd("mv file1.txt non_existent_dir")
         self.assertFalse(os.path.exists("non_existent_dir/file1.txt"))  # File should not be moved
+
+    def test_rm_invalid_file(self):
+        output = self.run_cmd("rm non_existent_file.txt")
+        self.assertIn("No such file found", output)
+
+    def test_cp_missing_args(self):
+        output = self.run_cmd("cp")
+        self.assertIn("Error", output)  # Should handle missing arguments gracefully

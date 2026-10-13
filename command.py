@@ -51,6 +51,8 @@ class MyCommand(cmd.Cmd):
 				print(f"Removed file: {file}")
 			else:
 				print(f"No such file found: {file}")
+		except ValueError:
+			print("Error: Invalid number of arguments.")
 		except Exception as e:
 			print(f"Error removing file: {e}")
 
